@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import BACKEND_URL from "@/lib/api";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 interface Project {
   _id: string;
@@ -27,7 +28,9 @@ async function trackClick(id: string, type: "live" | "github") {
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
-console.log(BACKEND_URL);
+  console.log("this is liknk to backend");
+  
+  console.log(BACKEND_URL);
 
   useEffect(() => {
     fetch(`${BACKEND_URL}/projects`)
@@ -89,10 +92,12 @@ console.log(BACKEND_URL);
                 {/* Image */}
                 <div className="relative h-36 bg-[#111827] overflow-hidden flex items-center justify-center">
                   {project.image ? (
-                    <img
+                    <Image
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   ) : (
                     <span className="font-mono text-[9px] text-[#334155] tracking-[.2em]">
@@ -100,7 +105,7 @@ console.log(BACKEND_URL);
                     </span>
                   )}
                   {project.featured && (
-                    <span className="absolute top-2 right-2 font-mono text-[9px] px-2 py-1 bg-[#3B82F6] text-white tracking-[.1em]">
+                    <span className="absolute top-2 right-2 font-mono text-[9px] px-2 py-1 bg-[#3B82F6] text-white tracking-widest">
                       FEATURED
                     </span>
                   )}
@@ -135,7 +140,7 @@ console.log(BACKEND_URL);
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => trackClick(project._id, "live")}
-                        className="flex-1 text-center font-mono text-[10px] py-2 bg-[#3B82F6] text-white tracking-[.1em] hover:bg-[#2563EB] transition-colors"
+                        className="flex-1 text-center font-mono text-[10px] py-2 bg-[#3B82F6] text-white tracking-widest hover:bg-[#2563EB] transition-colors"
                       >
                         LIVE SITE
                       </a>
@@ -146,7 +151,7 @@ console.log(BACKEND_URL);
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => trackClick(project._id, "github")}
-                        className="flex-1 text-center font-mono text-[10px] py-2 border border-white/10 text-white/50 tracking-[.1em] hover:text-white hover:border-white/30 transition-all"
+                        className="flex-1 text-center font-mono text-[10px] py-2 border border-white/10 text-white/50 tracking-widest hover:text-white hover:border-white/30 transition-all"
                       >
                         GITHUB
                       </a>
