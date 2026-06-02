@@ -27,6 +27,7 @@ async function trackClick(id: string, type: "live" | "github") {
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
+console.log(BACKEND_URL);
 
   useEffect(() => {
     fetch(`${BACKEND_URL}/projects`)
