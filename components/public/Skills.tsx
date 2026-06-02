@@ -31,9 +31,9 @@ export default function Skills() {
   return (
     <section id="skills" className="w-full flex justify-center py-24 px-6">
       <div className="w-full max-w-5xl">
-        <p className="font-mono text-[10px] tracking-[.25em] text-[#3B82F6] mb-3">
+        {/* <p className="font-mono text-[10px] tracking-[.25em] text-[#3B82F6] mb-3">
           02 / SKILLS
-        </p>
+        </p> */}
         <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-10">
           My Tech Stack<span className="text-[#3B82F6]">.</span>
         </h2>

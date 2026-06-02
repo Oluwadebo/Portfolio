@@ -49,9 +49,9 @@ export default function Projects() {
         }}
       />
       <div className="w-full max-w-5xl">
-        <p className="font-mono text-[10px] tracking-[.25em] text-[#3B82F6] mb-3">
+        {/* <p className="font-mono text-[10px] tracking-[.25em] text-[#3B82F6] mb-3">
           03 / PROJECTS
-        </p>
+        </p> */}
         <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-10">
           Selected Work<span className="text-[#3B82F6]">.</span>
         </h2>
