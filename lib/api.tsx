@@ -8,16 +8,16 @@ const BACKEND_URL =
     : process.env.NEXT_PUBLIC_BACKEND_URL || "https://portfolio-backend-1-f6e0.onrender.com/api";
 
 export const API_URLS = {
-  base: `${BACKEND_URL}/api`,
-  auth: `${BACKEND_URL}/api/auth`,
-  projects: `${BACKEND_URL}/api/projects`,
-  analytics: `${BACKEND_URL}/api/analytics`,
-  settings: `${BACKEND_URL}/api/settings`,
-  preview: `${BACKEND_URL}/api/view`,
+  // base: `${BACKEND_URL}/`,
+  auth: `${BACKEND_URL}/auth`,
+  projects: `${BACKEND_URL}/projects`,
+  analytics: `${BACKEND_URL}/analytics`,
+  settings: `${BACKEND_URL}/settings`,
+  preview: `${BACKEND_URL}/view`,
 };
 
 const api = axios.create({
-  baseURL: `${BACKEND_URL}/api`,
+  baseURL: BACKEND_URL,
   withCredentials: true,
 });
 
