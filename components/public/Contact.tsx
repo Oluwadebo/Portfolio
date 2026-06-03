@@ -43,7 +43,7 @@ export default function Contact() {
           <div>
             <p className="text-[#64748B] text-sm leading-relaxed mb-6">
               {settings.available
-                ? "I'm currently open to new opportunities — freelance projects, full-time roles, part-time role, or interesting collaborations. If you have something in mind, let's talk."
+                ? "I'm currently open to new opportunities — freelance projects, full-time roles, part-time roles, or interesting collaborations. If you have something in mind, let's talk."
                 : "I'm currently not available for new work. Feel free to reach out anyway — I'm always happy to connect and discuss future opportunities."}
             </p>
 
@@ -66,23 +66,6 @@ export default function Contact() {
             )}
 
             {/* Socials */}
-            <div className="flex gap-3">
-              {[
-                ["GITHUB", "https://github.com"],
-                ["LINKEDIN", "https://linkedin.com"],
-                ["TWITTER", "https://twitter.com"],
-              ].map(([label, href]) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-mono text-[10px] px-4 py-2 border border-white/8 text-[#64748B] hover:text-white hover:border-white/30 transition-all tracking-[.15em]"
-                >
-                  {label}
-                </a>
-              ))}
-            </div>
             {socials.length > 0 && (
               <div className="flex gap-3">
                 {socials.map(({ label, url }) => (
@@ -102,7 +85,7 @@ export default function Contact() {
 
           {/* Right CTA */}
           <div className="bg-[#0D1220] border border-white/5 p-7 relative overflow-hidden">
-            <div className="absolute -top-14 -right-14 w-40 h-40 rounded-full bg-[#3B82F6]/08 blur-2xl pointer-events-none" />
+            <div className="absolute -top-14 -right-14 w-40 h-40 rounded-full blur-2xl pointer-events-none" style={{ background: "rgba(59,130,246,0.08)" }}/>
             <p className="font-mono text-[10px] text-[#3B82F6] tracking-[.2em] mb-3">
               READY TO BUILD?
             </p>
