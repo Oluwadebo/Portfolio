@@ -2,14 +2,14 @@
 
 import { useSettings } from "@/hooks/useSettings";
 import { useEffect, useMemo, useState } from "react";
-// import { string } from "zod/v4";
 
 const rolesv = [
   "Full Stack Developer",
   "Next.js Engineer",
   "Node.js Backend Dev",
+  "REST API Developer",
   "TypeScript Enthusiast",
-  "Ai Enthusiast",
+  "Problem Solver",
 ];
 
 export default function Hero() {
@@ -49,7 +49,6 @@ export default function Hero() {
   const lastName = nameParts.slice(1).join(" ").toUpperCase() || "DEBO";
 
   return (
-    // <section className="relative min-h-screen flex items-center justify-center px-6 pt-16 overflow-hidden">
     <section className="relative min-h-screen flex items-center justify-center px-6 pt-16 overflow-hidden">
       {/* Grid bg */}
       <div
@@ -139,7 +138,7 @@ export default function Hero() {
             </span>
           </div>
           {/* Terminal body */}
-          <div className="p-5 font-mono text-[12px] leading-[2]">
+          <div className="p-5 font-mono text-[12px] leading-loose">
             <div className="text-[#334155]">{"// ogunwe.config.ts"}</div>
             <div>
               <span className="text-[#7DD3FC]">const</span>{" "}
@@ -162,16 +161,20 @@ export default function Hero() {
             <div>
               &nbsp;&nbsp;<span className="text-[#7DD3FC]">stack</span>: [
               <span className="text-[#86EFAC]">&quot;Next.js&quot;</span>,{" "}
-              <span className="text-[#86EFAC]">&quot;React.js&quot;</span>,{" "}
-              <span className="text-[#86EFAC]">&quot;HTML&quot;</span>,{" "}
-              <span className="text-[#86EFAC]">&quot;CSS&quot;</span>,{" "}
-              <span className="text-[#86EFAC]">&quot;Bootstrap&quot;</span>,{" "}
-              <span className="text-[#86EFAC]">&quot;Javascript&quot;</span>,{" "}
-              <span className="text-[#86EFAC]">&quot;Node.js&quot;</span>],
+              <span className="text-[#86EFAC]">&quot;Node.js&quot;</span>,{" "}
+              <span className="text-[#86EFAC]">&quot;TypeScript&quot;</span>,{" "}
+              <span className="text-[#86EFAC]">&quot;MongoDB&quot;</span>],
             </div>
             <div>
               &nbsp;&nbsp;<span className="text-[#7DD3FC]">experience</span>:{" "}
               <span className="text-[#FCA5A5]">&quot;Senior&quot;</span>,
+            </div>
+            <div>
+              &nbsp;&nbsp;<span className="text-[#7DD3FC]">location</span>:{" "}
+              <span className="text-[#86EFAC]">
+                &quot;Lagos, Nigeria 🇳🇬&quot;
+              </span>
+              ,
             </div>
             <div>
               &nbsp;&nbsp;<span className="text-[#7DD3FC]">available</span>:{" "}

@@ -46,7 +46,7 @@ export default function Navbar() {
           ))}
           <a
             href="#contact"
-            className="font-mono text-[12px] px-4 py-1.5 border border-[#3B82F6]/40 text-[#3B82F6] hover:bg-[#3B82F6] hover:text-white transition-all tracking-[.1em]"
+            className="hidden md:inline font-mono text-[12px] px-4 py-1.5 border border-[#3B82F6]/40 text-[#3B82F6] hover:bg-[#3B82F6] hover:text-white transition-all tracking-[.1em]"
           >
             HIRE ME
           </a>
