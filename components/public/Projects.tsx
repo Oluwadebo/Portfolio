@@ -60,7 +60,7 @@ export default function Projects() {
         {/* Loading skeletons */}
         {loading && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {[1, 2, 3].map((i) => (
+            {[1, 2, 3,4,5,6].map((i) => (
               <div
                 key={i}
                 className="h-72 bg-[#0D1220] border border-white/5 animate-pulse"

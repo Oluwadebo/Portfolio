@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { useSettings } from "@/hooks/useSettings";
+import { useState } from "react";
 
 export default function Contact() {
   const { settings } = useSettings();
@@ -42,12 +42,9 @@ export default function Contact() {
           {/* Left */}
           <div>
             <p className="text-[#64748B] text-sm leading-relaxed mb-6">
-              I&apos;m currently{" "}
               {settings.available
-                ? "open to new opportunities"
-                : "not available for new work"}{" "}
-              — freelance projects, full-time roles, or interesting
-              collaborations. If you have something in mind, let&apos;s talk.
+                ? "I'm currently open to new opportunities — freelance projects, full-time roles, part-time role, or interesting collaborations. If you have something in mind, let's talk."
+                : "I'm currently not available for new work. Feel free to reach out anyway — I'm always happy to connect and discuss future opportunities."}
             </p>
 
             {/* Email copy */}
