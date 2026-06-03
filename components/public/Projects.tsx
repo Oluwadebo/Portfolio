@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import BACKEND_URL from "@/lib/api";
+import { useEffect, useState } from "react";
 
 interface Project {
   _id: string;
@@ -27,12 +27,13 @@ async function trackClick(id: string, type: "live" | "github") {
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     fetch(`${BACKEND_URL}/projects`)
       .then((r) => r.json())
       .then(setProjects)
-      .catch(console.error)
+      .catch(() => setError(true))
       .finally(() => setLoading(false));
   }, []);
 
@@ -49,9 +50,9 @@ export default function Projects() {
         }}
       />
       <div className="w-full max-w-5xl">
-        {/* <p className="font-mono text-[10px] tracking-[.25em] text-[#3B82F6] mb-3">
-          03 / PROJECTS
-        </p> */}
+        <p className="font-mono text-[10px] tracking-[.25em] text-[#3B82F6] mb-3">
+          PROJECTS
+        </p>
         <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-10">
           Selected Work<span className="text-[#3B82F6]">.</span>
         </h2>
@@ -68,11 +69,20 @@ export default function Projects() {
           </div>
         )}
 
+        {/* Network error */}
+        {!loading && error && (
+          <div className="py-20 border border-dashed border-red-400/20 flex items-center justify-center">
+            <p className="font-mono text-[10px] text-red-400/60 tracking-[.2em]">
+              FAILED TO LOAD PROJECTS — CHECK CONNECTION
+            </p>
+          </div>
+        )}
+
         {/* Empty state */}
-        {!loading && projects.length === 0 && (
+        {!loading && !error && projects.length === 0 && (
           <div className="py-20 border border-dashed border-white/10 flex items-center justify-center">
             <p className="font-mono text-[10px] text-[#334155] tracking-[.2em]">
-              NO PROJECTS YET — ADD FROM ADMIN
+              PROJECTS COMING SOON
             </p>
           </div>
         )}
