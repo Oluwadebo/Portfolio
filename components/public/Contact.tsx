@@ -85,7 +85,10 @@ export default function Contact() {
 
           {/* Right CTA */}
           <div className="bg-[#0D1220] border border-white/5 p-7 relative overflow-hidden">
-            <div className="absolute -top-14 -right-14 w-40 h-40 rounded-full blur-2xl pointer-events-none" style={{ background: "rgba(59,130,246,0.08)" }}/>
+            <div
+              className="absolute -top-14 -right-14 w-40 h-40 rounded-full blur-2xl pointer-events-none"
+              style={{ background: "rgba(59,130,246,0.08)" }}
+            />
             <p className="font-mono text-[10px] text-[#3B82F6] tracking-[.2em] mb-3">
               READY TO BUILD?
             </p>
@@ -93,8 +96,9 @@ export default function Contact() {
               Have a project in mind?
             </h3>
             <p className="text-[#64748B] text-sm leading-relaxed mb-6">
-              Whether it&apos;s a startup MVP, a logistics platform, or a SaaS
-              tool — I&apos;d love to hear about it.
+              Whether it&apos;s a startup MVP, a logistics platform, a laundry
+              management system, or a full SaaS product — I&apos;ve built them,
+              and I&apos;d love to hear about yours.
             </p>
             <a
               href={`mailto:${settings.email}`}

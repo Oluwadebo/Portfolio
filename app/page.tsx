@@ -19,8 +19,6 @@ export default function Home() {
       <Projects />
       <div className="h-px bg-gradient-to-r from-transparent via-[#3B82F6]/20 to-transparent" />
       <Contact />
-
-      {/* <footer className="text-center py-8 text-[#3B82F6]/40 text-sm font-mono tracking-widest border-t border-white/5"> */}
       <footer className="text-center py-6 font-mono text-[11px] tracking-[.2em] text-[#3B82F6]/30 border-t border-white/5">
         © {new Date().getFullYear()} {settings.displayName.toUpperCase()} —
         BUILT WITH NEXT.JS

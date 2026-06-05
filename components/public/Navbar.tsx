@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { useSettings } from "@/hooks/useSettings";
+import { useEffect, useState } from "react";
 
 const links = [
   { label: "Skills", href: "#skills" },
@@ -34,7 +34,7 @@ export default function Navbar() {
         >
           {settings.siteName}
         </a>
-        <div className="flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-8">
           {links.map((link) => (
             <a
               key={link.href}
@@ -51,6 +51,13 @@ export default function Navbar() {
             HIRE ME
           </a>
         </div>
+
+        <a
+          href="#contact"
+          className="md:hidden font-mono text-[12px] px-4 py-1.5 border border-[#3B82F6]/40 text-[#3B82F6] hover:bg-[#3B82F6] hover:text-white transition-all tracking-[.1em]"
+        >
+          HIRE ME
+        </a>
       </div>
     </nav>
   );
