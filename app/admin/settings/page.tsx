@@ -80,7 +80,7 @@ export default function SettingsPage() {
     );
 
   return (
-    <div className="p-8 max-w-2xl">
+    <div className="p-8">
       <div className="mb-8">
         <p className="font-mono text-[10px] text-[#3B82F6] tracking-[.2em] mb-1">
           ADMIN / SETTINGS
@@ -89,6 +89,7 @@ export default function SettingsPage() {
       </div>
 
       <form onSubmit={handleSave} className="space-y-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         {/* Identity */}
         <div className="bg-[#0D1220] border border-white/5 p-5 space-y-4">
           <p className="font-mono text-[10px] text-[#3B82F6] tracking-[.2em]">
@@ -216,7 +217,7 @@ export default function SettingsPage() {
             />
           </Field>
         </div>
-
+</div>
         {/* Feedback */}
         {error && (
           <p className="font-mono text-[10px] text-red-400 tracking-widest border border-red-400/20 bg-red-400/5 px-3 py-2">

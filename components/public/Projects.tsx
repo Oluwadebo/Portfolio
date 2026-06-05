@@ -28,15 +28,51 @@ export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [page, setPage] = useState(1);
+const [hasMore, setHasMore] = useState(false);
+const [loadingMore, setLoadingMore] = useState(false);
 
-  useEffect(() => {
-    fetch(`${BACKEND_URL}/projects`)
-      .then((r) => r.json())
-      .then(setProjects)
-      .catch(() => setError(true))
-      .finally(() => setLoading(false));
-  }, []);
+const fetchProjects = async (pageNum: number, append = false) => {
+  const limit = pageNum === 1 ? 6 : 3;
+  try {
+    const r = await fetch(`${BACKEND_URL}/projects?page=${pageNum}&limit=${limit}`);
+    const data = await r.json();
+      if (append) {
+      setProjects((prev) => [...prev, ...data.projects]);
+    } else {
+      setProjects(data.projects);
+    }
+    setHasMore(data.hasMore);
+  } catch {
+    setError(true);
+  } finally {
+    setLoading(false);
+    setLoadingMore(false);
+  }
+};
 
+useEffect(() => {
+  const load = async () => {
+    await fetchProjects(1);
+  };
+  load();
+}, []);
+// useEffect(() => { fetchProjects(1); }, []);
+
+  // useEffect(() => {
+  //   fetch(`${BACKEND_URL}/projects`)
+  //     .then((r) => r.json())
+  //     .then(setProjects)
+  //     .catch(() => setError(true))
+  //     .finally(() => setLoading(false));
+  // }, []);
+
+  const loadMore = () => {
+  const nextPage = page + 1;
+  setPage(nextPage);
+  setLoadingMore(true);
+  fetchProjects(nextPage, true);
+};
   return (
     <section
       id="projects"
@@ -166,6 +202,18 @@ export default function Projects() {
             ))}
           </div>
         )}
+        {/* loadmore */}
+        {hasMore && (
+  <div className="flex justify-center mt-8">
+    <button
+      onClick={loadMore}
+      disabled={loadingMore}
+      className="font-mono text-[11px] px-8 py-3 border border-[#3B82F6]/40 text-[#3B82F6] hover:bg-[#3B82F6] hover:text-white transition-all tracking-[.1em] disabled:opacity-50"
+    >
+      {loadingMore ? "LOADING..." : "LOAD MORE PROJECTS"}
+    </button>
+  </div>
+)}
       </div>
     </section>
   );

@@ -1,11 +1,11 @@
 "use client";
 
+import { useSettings } from "@/hooks/useSettings";
 import { isLoggedIn, removeToken } from "@/lib/auth";
 import { ExternalLink, LogOut } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { useSettings } from "@/hooks/useSettings";
 
 const navItems = [
   { label: "DASHBOARD", href: "/admin/dashboard", icon: "▤" },
@@ -30,6 +30,8 @@ export default function AdminLayout({
     }
   }, [isLoginPage, router]);
 
+  if (isLoginPage) return <>{children}</>;
+
   if (!authenticated)
     return (
       <div className="min-h-screen bg-[#080C14] flex items-center justify-center">
@@ -38,8 +40,6 @@ export default function AdminLayout({
         </p>
       </div>
     );
-
-  if (isLoginPage) return <>{children}</>;
 
   const handleLogout = () => {
     removeToken();
@@ -52,10 +52,10 @@ export default function AdminLayout({
       <aside className="w-52 bg-[#0D1220] border-r border-white/5 flex flex-col fixed top-0 left-0 bottom-0">
         {/* Logo */}
         <div className="px-5 py-5 border-b border-white/5">
-          <p className="font-mono text-[13px] tracking-[.2em] text-[#3B82F6]">
+          <p className="font-mono text-[15px] tracking-[.2em] text-[#3B82F6]">
             {settings.siteName}
           </p>
-          <p className="font-mono text-[9px] tracking-[.2em] text-[#334155] mt-0.5">
+          <p className="font-mono text-[14px] tracking-[.2em] text-[#334155] mt-0.5">
             ADMIN PANEL
           </p>
         </div>
@@ -68,7 +68,7 @@ export default function AdminLayout({
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-3 px-3 py-2.5 font-mono text-[10px] tracking-[.15em] transition-all ${
+                className={`flex items-center gap-3 px-3 py-2.5 font-mono text-[13px] tracking-[.15em] transition-all ${
                   active
                     ? "bg-[#3B82F6]/10 text-[#3B82F6] border-l-2 border-[#3B82F6]"
                     : "text-[#64748B] hover:text-white hover:bg-white/5"
@@ -86,15 +86,15 @@ export default function AdminLayout({
           <Link
             href="/"
             target="_blank"
-            className="flex items-center gap-3 px-3 py-2.5 font-mono text-[10px] tracking-[.15em] text-[#64748B] hover:text-white transition-colors"
+            className="flex items-center gap-3 px-3 py-2.5 font-mono text-[13px] tracking-[.15em] text-[#64748B] hover:text-white transition-colors"
           >
-            <ExternalLink className="h-3 w-3" /> VIEW PUBLIC-SITE
+            <ExternalLink /> VIEW SITE
           </Link>
           <button
             onClick={handleLogout}
-            className="w-full flex items-center gap-3 px-3 py-2.5 font-mono text-[10px] tracking-[.15em] text-[#64748B] hover:text-red-400 transition-colors"
+            className="w-full flex items-center gap-3 px-3 py-2.5 font-mono text-[13px] tracking-[.15em] text-white bg-red-500/10 border border-red-500/20 hover:bg-red-500/20 hover:text-red-400 transition-all"
           >
-            <LogOut className="h-3 w-3" />
+            <LogOut />
             LOGOUT
           </button>
         </div>

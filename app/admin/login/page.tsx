@@ -66,7 +66,7 @@ export default function AdminLogin() {
             {settings.siteName}
           </p>
           <p className="font-mono text-[10px] tracking-[.2em] text-[#334155]">
-            ADMIN ACCESS
+            ADMIN ACCESS ONLY
           </p>
         </div>
 
@@ -98,7 +98,6 @@ export default function AdminLogin() {
               />
             </div>
 
-            {/* Password */}
             {/* Password */}
             <div>
               <label className="font-mono text-[10px] text-[#3B82F6] tracking-[.2em] block mb-2">

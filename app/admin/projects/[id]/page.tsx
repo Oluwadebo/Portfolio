@@ -48,8 +48,9 @@ export default function ProjectForm() {
       setFetching(true);
       try {
         const res = await fetch(`${BACKEND_URL}/projects`);
-        const projects = await res.json();
-        const project = projects.find((p: any) => p._id === params.id);
+       const data = await res.json();
+        const projectList = Array.isArray(data) ? data : data.projects ?? [];
+        const project = projectList.find((p: any) => p._id === params.id);
         if (project) {
           setForm({
             title: project.title || "",
@@ -264,15 +265,6 @@ export default function ProjectForm() {
         </Field>
 
         {/* Image URL (manual override) */}
-        {/* <Field label="IMAGE URL (MANUAL OVERRIDE)">
-          <input
-            type="url"
-            value={form.image}
-            onChange={(e) => setForm((f) => ({ ...f, image: e.target.value }))}
-            placeholder="https://..."
-            className={inputClass}
-          />
-        </Field> */}
         <Field label="IMAGE URL (MANUAL OVERRIDE)">
           <div className="flex gap-2 items-center">
             <input
@@ -305,17 +297,7 @@ export default function ProjectForm() {
         </Field>
 
         {/* GitHub URL */}
-        {/* <Field label="GITHUB URL">
-          <input
-            type="url"
-            value={form.githubUrl}
-            onChange={(e) =>
-              setForm((f) => ({ ...f, githubUrl: e.target.value }))
-            }
-            placeholder="https://github.com/..."
-            className={inputClass}
-          />
-        </Field> */}
+
         <Field label="GITHUB URL">
           <div className="flex gap-2">
             <input
@@ -327,14 +309,6 @@ export default function ProjectForm() {
               placeholder="https://github.com/you/repo"
               className={`${inputClass} flex-1`}
             />
-            {/* <button
-              type="button"
-              onClick={fetchGitHubPreview}
-              disabled={previewLoading || !form.githubUrl}
-              className="font-mono text-[10px] px-4 py-2.5 bg-[#1E293B] border border-white/10 text-[#64748B] hover:text-white tracking-[.1em] transition-colors disabled:opacity-40 whitespace-nowrap"
-            >
-              {previewLoading ? "FETCHING..." : "FETCH INFO"}
-            </button> */}
             <button
               type="button"
               onClick={fetchGitHubPreview}

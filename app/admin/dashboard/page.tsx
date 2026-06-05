@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { authHeaders } from "@/lib/auth";
 import BACKEND_URL from "@/lib/api";
+import { authHeaders } from "@/lib/auth";
+import { useEffect, useState } from "react";
 
 interface Analytics {
   totalVisits: number;
@@ -65,10 +65,15 @@ export default function Dashboard() {
           </div>
 
           {/* Daily visits chart */}
-          <div className="bg-[#0D1220] border border-white/5 p-6 mb-6">
-            <p className="font-mono text-[10px] text-[#3B82F6] tracking-[.2em] mb-6">
-              DAILY VISITS — LAST 30 DAYS
-            </p>
+          <div className=" bg-[#0D1220] border border-white/5 p-6 mb-6">
+            <div className="flex items-center justify-between mb-6">
+              <p className="font-mono text-[10px] text-[#3B82F6] tracking-[.2em]">
+                DAILY VISITS — LAST 30 DAYS
+              </p>
+              <p className="font-mono text-[10px] text-[#64748B]">
+                {data?.recentVisits} TOTAL
+              </p>
+            </div>
             {data?.dailyVisits && data.dailyVisits.length > 0 ? (
               <div className="flex items-end gap-1 h-32">
                 {data.dailyVisits.map((day) => (
@@ -87,6 +92,12 @@ export default function Dashboard() {
                         {day.count}
                       </div>
                     </div>
+                    <span className="font-mono text-[8px] text-[#334155] mt-1  whitespace-nowrap">
+                      {new Date(day._id).toLocaleDateString("en-GB", {
+                        day: "numeric",
+                        month: "short",
+                      })}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -129,6 +140,15 @@ export default function Dashboard() {
                         </p>
                         <p className="font-mono text-sm text-[#64748B]">
                           {project.clicks?.github ?? 0}
+                        </p>
+                      </div>
+                      <div className="text-right">
+                        <p className="font-mono text-[9px] text-[#334155] tracking-widest">
+                          TOTAL
+                        </p>
+                        <p className="font-mono text-sm text-white">
+                          {(project.clicks?.live ?? 0) +
+                            (project.clicks?.github ?? 0)}
                         </p>
                       </div>
                     </div>
