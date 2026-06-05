@@ -18,6 +18,10 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Ogunwe Debo — Full Stack Developer | Portfolio",
   description: "I build fast, scalable, production-ready web applications — from pixel-perfect UIs to robust backend systems.",
+  icons: {
+    icon: "favicon.ico",
+    apple: "apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({

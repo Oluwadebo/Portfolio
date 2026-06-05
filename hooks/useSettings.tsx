@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import BACKEND_URL from "@/lib/api";
 
 export interface SiteSettings {
   siteName: string;
@@ -25,9 +26,6 @@ const defaultSettings: SiteSettings = {
   linkedin: "",
   twitter: "",
 };
-
-const BACKEND_URL =
-  process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000/api";
 
 export function useSettings() {
   const [settings, setSettings] = useState<SiteSettings>(defaultSettings);
