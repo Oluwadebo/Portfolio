@@ -16,9 +16,11 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ogunwe Debo — Full Stack Developer",
-  description:
-    "Full Stack Developer specialising in Next.js, TypeScript & Node.js",
+  title: "Ogunwe Debo — Full Stack Developer | Portfolio",
+  description: "I build fast, scalable, production-ready web applications — from pixel-perfect UIs to robust backend systems.",
+
+  // description:
+  //   "Full Stack Developer specialising in Next.js, TypeScript & Node.js",
 };
 
 export default function RootLayout({
