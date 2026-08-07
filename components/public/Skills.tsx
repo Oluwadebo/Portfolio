@@ -3,7 +3,7 @@
 const skills = [
   {
     category: "FRONTEND",
-    items: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    items: ["Next.js", "React", "TypeScript","JavaScript", "Tailwind CSS"],
   },
   {
     category: "BACKEND",
