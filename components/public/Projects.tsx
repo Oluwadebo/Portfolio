@@ -29,35 +29,37 @@ export default function Projects() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [page, setPage] = useState(1);
-const [hasMore, setHasMore] = useState(false);
-const [loadingMore, setLoadingMore] = useState(false);
+  const [hasMore, setHasMore] = useState(false);
+  const [loadingMore, setLoadingMore] = useState(false);
 
-const fetchProjects = async (pageNum: number, append = false) => {
-  const limit = pageNum === 1 ? 6 : 3;
-  try {
-    const r = await fetch(`${BACKEND_URL}/projects?page=${pageNum}&limit=${limit}`);
-    const data = await r.json();
+  const fetchProjects = async (pageNum: number, append = false) => {
+    const limit = pageNum === 1 ? 6 : 6;
+    try {
+      const r = await fetch(
+        `${BACKEND_URL}/projects?page=${pageNum}&limit=${limit}`,
+      );
+      const data = await r.json();
       if (append) {
-      setProjects((prev) => [...prev, ...data.projects]);
-    } else {
-      setProjects(data.projects);
+        setProjects((prev) => [...prev, ...data.projects]);
+      } else {
+        setProjects(data.projects);
+      }
+      setHasMore(data.hasMore);
+    } catch {
+      setError(true);
+    } finally {
+      setLoading(false);
+      setLoadingMore(false);
     }
-    setHasMore(data.hasMore);
-  } catch {
-    setError(true);
-  } finally {
-    setLoading(false);
-    setLoadingMore(false);
-  }
-};
-
-useEffect(() => {
-  const load = async () => {
-    await fetchProjects(1);
   };
-  load();
-}, []);
-// useEffect(() => { fetchProjects(1); }, []);
+
+  useEffect(() => {
+    const load = async () => {
+      await fetchProjects(1);
+    };
+    load();
+  }, []);
+  // useEffect(() => { fetchProjects(1); }, []);
 
   // useEffect(() => {
   //   fetch(`${BACKEND_URL}/projects`)
@@ -68,11 +70,11 @@ useEffect(() => {
   // }, []);
 
   const loadMore = () => {
-  const nextPage = page + 1;
-  setPage(nextPage);
-  setLoadingMore(true);
-  fetchProjects(nextPage, true);
-};
+    const nextPage = page + 1;
+    setPage(nextPage);
+    setLoadingMore(true);
+    fetchProjects(nextPage, true);
+  };
   return (
     <section
       id="projects"
@@ -96,7 +98,7 @@ useEffect(() => {
         {/* Loading skeletons */}
         {loading && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {[1, 2, 3,4,5,6].map((i) => (
+            {[1, 2, 3, 4, 5, 6].map((i) => (
               <div
                 key={i}
                 className="h-72 bg-[#0D1220] border border-white/5 animate-pulse"
@@ -204,16 +206,16 @@ useEffect(() => {
         )}
         {/* loadmore */}
         {hasMore && (
-  <div className="flex justify-center mt-8">
-    <button
-      onClick={loadMore}
-      disabled={loadingMore}
-      className="font-mono text-[11px] px-8 py-3 border border-[#3B82F6]/40 text-[#3B82F6] hover:bg-[#3B82F6] hover:text-white transition-all tracking-[.1em] disabled:opacity-50"
-    >
-      {loadingMore ? "LOADING..." : "LOAD MORE PROJECTS"}
-    </button>
-  </div>
-)}
+          <div className="flex justify-center mt-8">
+            <button
+              onClick={loadMore}
+              disabled={loadingMore}
+              className="font-mono text-[11px] px-8 py-3 border border-[#3B82F6]/40 text-[#3B82F6] hover:bg-[#3B82F6] hover:text-white transition-all tracking-[.1em] disabled:opacity-50"
+            >
+              {loadingMore ? "LOADING..." : "LOAD MORE PROJECTS"}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

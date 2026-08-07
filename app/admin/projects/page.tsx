@@ -29,7 +29,7 @@ export default function ProjectsPage() {
 
   const fetchProjects = () => {
     setLoading(true);
-    fetch(`${BACKEND_URL}/projects`)
+    fetch(`${BACKEND_URL}/projects/admin`)
       .then((r) => r.json())
       .then((data) => {
       // Handle both old array response and new paginated response
