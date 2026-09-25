@@ -167,7 +167,7 @@ export default function Hero() {
             </div>
             <div>
               &nbsp;&nbsp;<span className="text-[#7DD3FC]">experience</span>:{" "}
-              <span className="text-[#FCA5A5]">&quot;Senior&quot;</span>,
+              <span className="text-[#FCA5A5]">&quot;4+ years&quot;</span>,
             </div>
             <div>
               &nbsp;&nbsp;<span className="text-[#7DD3FC]">location</span>:{" "}
