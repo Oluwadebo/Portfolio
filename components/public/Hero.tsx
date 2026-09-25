@@ -172,7 +172,7 @@ export default function Hero() {
             <div>
               &nbsp;&nbsp;<span className="text-[#7DD3FC]">location</span>:{" "}
               <span className="text-[#86EFAC]">
-                &quot;Lagos, Nigeria 🇳🇬&quot;
+                &quot;Ogbomoso, Nigeria 🇳🇬&quot;
               </span>
               ,
             </div>
